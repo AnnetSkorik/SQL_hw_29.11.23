@@ -1,0 +1,55 @@
+-------------HOME WORK----------------
+ 1) Задачу 1 сделали в классе.
+2) Вывести имена всех преподавателей с их компетенциями
+select 
+	t1.name,
+   	t2.title
+from Teachers as t1
+inner join Teachers2Competencies t2
+on t1.id = t2.teacher_id
+
+3) Найти преподавателя, у которого нет компетенций
+select 
+	t1.name
+    	from Teachers as t1
+  inner join Courses t2
+on t1.id = t2.teacher_id
+where t2.id is null;
+
+4) Найти имена студентов, которые не проходят ни один курс
+select
+	t1.name
+from Students as t1
+inner join Students2Courses as t2
+on t1.id = t2.student_id
+where t2.id is null;
+
+5) Найти курсы, которые не посещает ни один студент
+select 
+	t1.title
+from Courses as t1
+inner join Students2Courses as t2
+on t2.course_id = t1.id
+where t2.course_id is null;
+
+6) Найти компетенции, которых нет ни у одного преподавателя
+select 
+	t1.title
+from Competencies as t1
+inner join Teachers2Competencies as t2
+on t1.id = t2.competencies_id
+where t2.competencies_id = null;
+
+8) Вывести имя студента и имена старост, которые есть на курсах, которые он проходит
+
+select 
+	t1.name,
+   	t3.headman_id
+from  Students as t1
+inner join Students2Courses as t2
+on t1.id = t2.student_id
+inner join Courses as t3
+on t2.course_id = t3.id
+
+Скрипт для выполнения данной работы лежит в репозитории по адресу
+https://github.com/IuriiAV/sqlformorninggroup/blob/master/scrip-uni.sql
